@@ -35,7 +35,7 @@ export function Panel() {
       <div
         role="tablist"
         aria-label="Sección del panel"
-        className="inline-flex rounded-lg border border-zinc-200 p-1 dark:border-zinc-800"
+        className="inline-flex rounded-lg border border-zinc-200 p-1"
       >
         <button
           role="tab"
@@ -43,8 +43,8 @@ export function Panel() {
           onClick={() => setTab("solicitudes")}
           className={`rounded-md px-4 py-2 text-sm font-medium ${
             tab === "solicitudes"
-              ? "bg-emerald-600 text-white"
-              : "text-zinc-700 dark:text-zinc-200"
+              ? "bg-orange-600 text-white"
+              : "text-zinc-700"
           }`}
         >
           Solicitudes
@@ -55,8 +55,8 @@ export function Panel() {
           onClick={() => setTab("psicologos")}
           className={`rounded-md px-4 py-2 text-sm font-medium ${
             tab === "psicologos"
-              ? "bg-emerald-600 text-white"
-              : "text-zinc-700 dark:text-zinc-200"
+              ? "bg-orange-600 text-white"
+              : "text-zinc-700"
           }`}
         >
           Psicólogos
@@ -107,7 +107,7 @@ function SolicitudesTab() {
           <select
             value={filtro}
             onChange={(e) => setFiltro(e.target.value)}
-            className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+            className="rounded-md border border-zinc-300 bg-white px-3 py-2"
           >
             <option value="">Todas</option>
             <option value="pendiente">Pendientes</option>
@@ -120,7 +120,7 @@ function SolicitudesTab() {
           type="button"
           onClick={cargar}
           disabled={loading}
-          className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-2.5 font-medium text-white hover:bg-emerald-700 disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-2.5 font-medium text-white hover:bg-orange-700 disabled:opacity-60"
         >
           {loading ? "Cargando…" : "Cargar solicitudes"}
         </button>
@@ -129,14 +129,14 @@ function SolicitudesTab() {
       {error && (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/60 dark:bg-red-900/30 dark:text-red-100"
+          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
         >
           {error}
         </p>
       )}
 
       {data && data.length === 0 && (
-        <p className="text-sm text-zinc-600 dark:text-zinc-300">
+        <p className="text-sm text-zinc-600">
           No hay solicitudes para mostrar.
         </p>
       )}
@@ -156,9 +156,9 @@ function TablaSolicitudes({
   onChanged: () => void;
 }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+    <div className="overflow-x-auto rounded-lg border border-zinc-200">
       <table className="w-full text-left text-sm">
-        <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200">
+        <thead className="bg-zinc-100 text-zinc-700">
           <tr>
             <th className="px-3 py-2">Fecha</th>
             <th className="px-3 py-2">Nombre</th>
@@ -217,7 +217,7 @@ function SolicitudRow({
   }
 
   return (
-    <tr className="border-t border-zinc-200 dark:border-zinc-800">
+    <tr className="border-t border-zinc-200">
       <td className="px-3 py-2 whitespace-nowrap">
         {new Date(s.createdAt).toLocaleString("es-VE")}
       </td>
@@ -227,7 +227,7 @@ function SolicitudRow({
       <td className="px-3 py-2">
         <div>{s.telefono}</div>
         {s.email && (
-          <div className="text-zinc-500 dark:text-zinc-400">{s.email}</div>
+          <div className="text-zinc-500">{s.email}</div>
         )}
       </td>
       <td className="px-3 py-2">{s.modalidad}</td>
@@ -239,7 +239,7 @@ function SolicitudRow({
           <select
             value={estado}
             onChange={(e) => setEstado(e.target.value)}
-            className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-950"
+            className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs "
           >
             <option value="pendiente">pendiente</option>
             <option value="en_proceso">en_proceso</option>
@@ -250,7 +250,7 @@ function SolicitudRow({
             type="button"
             onClick={guardar}
             disabled={saving || estado === s.estadoSolicitud}
-            className="rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-white"
+            className="rounded-md bg-zinc-200 px-2 py-1 text-xs font-medium text-zinc-900 hover:bg-zinc-300 disabled:opacity-50"
           >
             {saving ? "…" : "Guardar"}
           </button>
@@ -293,7 +293,7 @@ function PsicologosTab() {
         type="button"
         onClick={cargar}
         disabled={loading}
-        className="inline-flex w-fit items-center justify-center rounded-md bg-emerald-600 px-5 py-2.5 font-medium text-white hover:bg-emerald-700 disabled:opacity-60"
+        className="inline-flex w-fit items-center justify-center rounded-md bg-orange-600 px-5 py-2.5 font-medium text-white hover:bg-orange-700 disabled:opacity-60"
       >
         {loading ? "Cargando…" : "Cargar psicólogos"}
       </button>
@@ -301,14 +301,14 @@ function PsicologosTab() {
       {error && (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/60 dark:bg-red-900/30 dark:text-red-100"
+          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
         >
           {error}
         </p>
       )}
 
       {data && data.length === 0 && (
-        <p className="text-sm text-zinc-600 dark:text-zinc-300">
+        <p className="text-sm text-zinc-600">
           No hay psicólogos registrados.
         </p>
       )}
@@ -328,9 +328,9 @@ function TablaPsicologos({
   onChanged: () => void;
 }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+    <div className="overflow-x-auto rounded-lg border border-zinc-200">
       <table className="w-full text-left text-sm">
-        <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200">
+        <thead className="bg-zinc-100 text-zinc-700">
           <tr>
             <th className="px-3 py-2">Fecha</th>
             <th className="px-3 py-2">Nombre</th>
@@ -388,7 +388,7 @@ function PsicologoRow({
   }
 
   return (
-    <tr className="border-t border-zinc-200 dark:border-zinc-800">
+    <tr className="border-t border-zinc-200">
       <td className="px-3 py-2 whitespace-nowrap">
         {new Date(p.createdAt).toLocaleString("es-VE")}
       </td>
@@ -402,7 +402,7 @@ function PsicologoRow({
           <select
             value={estado}
             onChange={(e) => setEstado(e.target.value)}
-            className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-950"
+            className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs "
           >
             <option value="pendiente">pendiente</option>
             <option value="validado">validado</option>
@@ -413,7 +413,7 @@ function PsicologoRow({
             type="button"
             onClick={guardar}
             disabled={saving || estado === p.estado}
-            className="rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-white"
+            className="rounded-md bg-zinc-200 px-2 py-1 text-xs font-medium text-zinc-900 hover:bg-zinc-300 disabled:opacity-50"
           >
             {saving ? "…" : "Guardar"}
           </button>

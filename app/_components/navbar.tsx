@@ -9,72 +9,74 @@ export async function Navbar() {
   const nombre = session?.user?.name;
 
   return (
-    <header className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
+    <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white shadow-sm">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 text-black">
+        <Link href="/" className="flex items-center gap-3 font-heading font-bold text-xl tracking-tight text-zinc-900">
           <Image
             src="/logo.png"
             alt="Logo Psicólogos por Venezuela"
             width={40}
             height={40}
-            className="h-9 w-9"
+            className="h-10 w-10 object-contain"
           />
           <span>Psicólogos por Venezuela</span>
         </Link>
-        <ul className="flex items-center gap-2 text-sm sm:gap-4">
-          {!session && (
+        
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <Link href="/" className="text-zinc-600 hover:text-orange-700 transition-colors">
+            Inicio
+          </Link>
+          <Link href="/#mision" className="text-zinc-600 hover:text-orange-700 transition-colors">
+            Nuestra Misión
+          </Link>
+          {rol === "admin" && (
+            <Link href="/panel" className="text-zinc-500 hover:text-zinc-800 transition-colors">
+              Coordinación
+            </Link>
+          )}
+        </div>
+
+        <div className="flex items-center gap-4 text-sm font-medium">
+          {!session ? (
             <>
-              <li>
-                <Link
-                  href="/login"
-                  className="rounded-md px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              <Link
+                href="/login"
+                className="hidden sm:inline-block px-4 py-2 text-zinc-600 hover:text-orange-700 transition-colors"
+              >
+                Iniciar sesión
+              </Link>
+              <Link
+                href="/registro"
+                className="hidden sm:inline-flex items-center justify-center rounded-lg bg-orange-600 px-5 py-2.5 text-white font-semibold shadow-sm shadow-orange-200/50 transition-all hover:bg-orange-700"
+              >
+                Crear cuenta
+              </Link>
+              <Link
+                href="/registro"
+                className="inline-flex sm:hidden items-center justify-center rounded-lg bg-orange-600 px-4 py-2 text-white font-semibold shadow-sm shadow-orange-200/50 transition-all hover:bg-orange-700"
+              >
+                Crear cuenta
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/dashboard"
+                className="rounded-md px-3 py-2 hover:bg-zinc-100 transition-colors"
+              >
+                {nombre ?? "Mi cuenta"}
+              </Link>
+              <form action={logoutAction}>
+                <button
+                  type="submit"
+                  className="rounded-md border border-zinc-300 px-3 py-2 hover:bg-zinc-100 transition-colors"
                 >
-                  Iniciar sesión
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/registro"
-                  className="rounded-md bg-emerald-600 px-3 py-2 font-medium text-white hover:bg-emerald-700"
-                >
-                  Crear cuenta
-                </Link>
-              </li>
+                  Salir
+                </button>
+              </form>
             </>
           )}
-          {session && (
-            <>
-              <li>
-                <Link
-                  href="/dashboard"
-                  className="rounded-md px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                >
-                  {nombre ?? "Mi cuenta"}
-                </Link>
-              </li>
-              {rol === "admin" && (
-                <li>
-                  <Link
-                    href="/panel"
-                    className="rounded-md px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                  >
-                    Panel
-                  </Link>
-                </li>
-              )}
-              <li>
-                <form action={logoutAction}>
-                  <button
-                    type="submit"
-                    className="rounded-md border border-zinc-300 px-3 py-2 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
-                  >
-                    Salir
-                  </button>
-                </form>
-              </li>
-            </>
-          )}
-        </ul>
+        </div>
       </nav>
     </header>
   );

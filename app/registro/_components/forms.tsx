@@ -22,7 +22,7 @@ export function RegistroPsicologoForm() {
           type="text"
           name="nombre"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2"
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -31,7 +31,7 @@ export function RegistroPsicologoForm() {
           type="email"
           name="email"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -42,7 +42,7 @@ export function RegistroPsicologoForm() {
           required
           minLength={8}
           autoComplete="new-password"
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -51,7 +51,7 @@ export function RegistroPsicologoForm() {
           type="text"
           name="colegiatura"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm sm:col-span-2">
@@ -60,7 +60,7 @@ export function RegistroPsicologoForm() {
           type="text"
           name="especialidad"
           placeholder="Ej. psicología clínica, infantil, de emergencia…"
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm sm:col-span-2">
@@ -68,7 +68,7 @@ export function RegistroPsicologoForm() {
         <select
           name="modalidad"
           defaultValue="online"
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         >
           <option value="online">Atención en línea</option>
           <option value="presencial">Atención presencial</option>
@@ -80,14 +80,14 @@ export function RegistroPsicologoForm() {
         <textarea
           name="mensaje"
           rows={3}
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
 
       {state.error && (
         <p
           role="alert"
-          className="sm:col-span-2 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/60 dark:bg-red-900/30 dark:text-red-100"
+          className="sm:col-span-2 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
         >
           {state.error}
         </p>
@@ -97,7 +97,7 @@ export function RegistroPsicologoForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-3 font-medium text-white hover:bg-emerald-700 disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-3 font-medium text-white hover:bg-orange-700 disabled:opacity-60"
         >
           {pending ? "Creando cuenta…" : "Crear cuenta de psicólogo"}
         </button>
@@ -119,7 +119,7 @@ export function RegistroPacienteForm() {
           type="text"
           name="nombre"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -130,7 +130,7 @@ export function RegistroPacienteForm() {
           min={5}
           max={120}
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -139,7 +139,7 @@ export function RegistroPacienteForm() {
           type="tel"
           name="telefono"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -148,7 +148,7 @@ export function RegistroPacienteForm() {
           type="text"
           name="estado"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -157,7 +157,7 @@ export function RegistroPacienteForm() {
           type="email"
           name="email"
           required
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -168,7 +168,7 @@ export function RegistroPacienteForm() {
           required
           minLength={8}
           autoComplete="new-password"
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
       <label className="flex flex-col gap-1 text-sm sm:col-span-2">
@@ -176,7 +176,7 @@ export function RegistroPacienteForm() {
         <select
           name="modalidad"
           defaultValue="videollamada"
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         >
           <option value="videollamada">Videollamada</option>
           <option value="llamada">Llamada telefónica</option>
@@ -189,14 +189,14 @@ export function RegistroPacienteForm() {
         <textarea
           name="mensaje"
           rows={3}
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2 "
         />
       </label>
 
       {state.error && (
         <p
           role="alert"
-          className="sm:col-span-2 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/60 dark:bg-red-900/30 dark:text-red-100"
+          className="sm:col-span-2 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
         >
           {state.error}
         </p>
@@ -206,7 +206,7 @@ export function RegistroPacienteForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-3 font-medium text-white hover:bg-emerald-700 disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-3 font-medium text-white hover:bg-orange-700 disabled:opacity-60"
         >
           {pending ? "Creando cuenta…" : "Crear cuenta de paciente"}
         </button>
