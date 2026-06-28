@@ -19,6 +19,7 @@ export function VoluntarioForm() {
     const payload = {
       nombre: String(fd.get("nombre") ?? "").trim(),
       email: String(fd.get("email") ?? "").trim(),
+      cedula: String(fd.get("cedula") ?? "").trim(),
       colegiatura: String(fd.get("colegiatura") ?? "").trim(),
       especialidad: String(fd.get("especialidad") ?? "").trim(),
       telefonoWhatsapp: String(fd.get("telefonoWhatsapp") ?? "").trim(),
@@ -95,6 +96,19 @@ export function VoluntarioForm() {
           name="email"
           type="email"
           required
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2"
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-sm">
+        <span className="font-medium">
+          Cédula de identidad <span className="text-red-600">*</span>
+        </span>
+        <input
+          name="cedula"
+          type="text"
+          required
+          inputMode="numeric"
+          placeholder="V-12345678 o E-12345678"
           className="rounded-md border border-zinc-300 bg-white px-3 py-2"
         />
       </label>

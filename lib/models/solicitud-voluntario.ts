@@ -18,6 +18,7 @@ const solicitudVoluntarioSchema = new Schema(
       trim: true,
       match: [/^\S+@\S+\.\S+$/, "Email inválido"],
     },
+    cedula: { type: String, required: true, trim: true },
     colegiatura: { type: String, required: true, trim: true },
     especialidad: { type: String, trim: true, default: "" },
     telefonoWhatsapp: {

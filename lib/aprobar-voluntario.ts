@@ -47,6 +47,7 @@ export async function aprobarVoluntario(
   const datos = {
     nombre: solicitud.nombre,
     email: emailNorm,
+    cedula: (solicitud.cedula ?? "").trim(),
     colegiatura: solicitud.colegiatura,
     especialidad: solicitud.especialidad ?? "",
     telefonoWhatsapp: normalizarTelefono(solicitud.telefonoWhatsapp ?? ""),

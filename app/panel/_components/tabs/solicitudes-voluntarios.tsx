@@ -6,6 +6,7 @@ type Solicitud = {
   _id: string;
   nombre: string;
   email: string;
+  cedula: string;
   colegiatura: string;
   especialidad?: string;
   telefonoWhatsapp?: string;
@@ -102,6 +103,7 @@ export function SolicitudesVoluntariosTab() {
                 <th className="px-3 py-2">Email</th>
                 <th className="px-3 py-2">WhatsApp</th>
                 <th className="px-3 py-2">Meet</th>
+                <th className="px-3 py-2">Cédula</th>
                 <th className="px-3 py-2">Colegiatura</th>
                 <th className="px-3 py-2">Rango / Modalidad</th>
                 <th className="px-3 py-2">Mensaje</th>
@@ -213,6 +215,7 @@ function SolicitudRow({
           </a>
         ) : "—"}
       </td>
+      <td className="px-3 py-2 font-mono text-xs">{s.cedula}</td>
       <td className="px-3 py-2 font-mono text-xs">{s.colegiatura}</td>
       <td className="px-3 py-2">
         <div>{s.rangoAtencion}</div>
