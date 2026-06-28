@@ -21,13 +21,16 @@ export async function Navbar() {
           />
           <span>Psicólogos por Venezuela</span>
         </Link>
-        
+
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <Link href="/" className="text-zinc-600 hover:text-orange-700 transition-colors">
             Inicio
           </Link>
-          <Link href="/#mision" className="text-zinc-600 hover:text-orange-700 transition-colors">
-            Nuestra Misión
+          <Link href="/atencion" className="text-zinc-600 hover:text-orange-700 transition-colors">
+            Atención
+          </Link>
+          <Link href="/voluntarios" className="text-zinc-600 hover:text-orange-700 transition-colors">
+            Voluntarios
           </Link>
           {rol === "admin" && (
             <Link href="/panel" className="text-zinc-500 hover:text-zinc-800 transition-colors">
@@ -38,26 +41,12 @@ export async function Navbar() {
 
         <div className="flex items-center gap-4 text-sm font-medium">
           {!session ? (
-            <>
-              <Link
-                href="/login"
-                className="hidden sm:inline-block px-4 py-2 text-zinc-600 hover:text-orange-700 transition-colors"
-              >
-                Iniciar sesión
-              </Link>
-              <Link
-                href="/registro"
-                className="hidden sm:inline-flex items-center justify-center rounded-lg bg-orange-600 px-5 py-2.5 text-white font-semibold shadow-sm shadow-orange-200/50 transition-all hover:bg-orange-700"
-              >
-                Crear cuenta
-              </Link>
-              <Link
-                href="/registro"
-                className="inline-flex sm:hidden items-center justify-center rounded-lg bg-orange-600 px-4 py-2 text-white font-semibold shadow-sm shadow-orange-200/50 transition-all hover:bg-orange-700"
-              >
-                Crear cuenta
-              </Link>
-            </>
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center rounded-lg bg-orange-600 px-5 py-2.5 text-white font-semibold shadow-sm shadow-orange-200/50 transition-all hover:bg-orange-700"
+            >
+              Iniciar sesión
+            </Link>
           ) : (
             <>
               <Link

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState } from "react";
 import { loginAction, type LoginState } from "../../_actions/auth";
 
@@ -52,14 +51,8 @@ export function LoginForm() {
         {pending ? "Ingresando…" : "Iniciar sesión"}
       </button>
 
-      <p className="text-center text-sm text-zinc-600">
-        ¿Aún no tienes cuenta?{" "}
-        <Link
-          href="/registro"
-          className="font-medium text-orange-700 hover:underline"
-        >
-          Regístrate
-        </Link>
+      <p className="text-center text-xs text-zinc-500">
+        Acceso exclusivo para el equipo de coordinación.
       </p>
     </form>
   );

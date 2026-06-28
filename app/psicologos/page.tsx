@@ -6,7 +6,7 @@ import { Footer } from "../_components/footer";
 export const metadata: Metadata = {
   title: "Soy psicólogo — Psicólogos por Venezuela",
   description:
-    "Únete como voluntario a la red de apoyo psicológico para personas afectadas por el terremoto en Venezuela.",
+    "Sumate como voluntario a la red de apoyo psicológico para personas afectadas por el terremoto en Venezuela.",
 };
 
 export default function PsicologosPage() {
@@ -53,15 +53,15 @@ export default function PsicologosPage() {
               ¿Listo para sumarte?
             </h2>
             <p className="mt-2 text-sm text-orange-800">
-              Crea tu cuenta de psicólogo. Te pediremos tu número de
-              colegiatura; un administrador la validará antes de asignarte
-              pacientes.
+              No necesitás crear una cuenta. Completá el formulario de
+              voluntario con tus datos y tu WhatsApp; nuestro equipo validará tu
+              colegiatura y te sumaremos a la red de atención.
             </p>
             <Link
-              href="/registro"
+              href="/voluntarios"
               className="mt-4 inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-2.5 font-medium text-white hover:bg-orange-700"
             >
-              Crear cuenta de psicólogo
+              Completar formulario
             </Link>
           </div>
         </section>
