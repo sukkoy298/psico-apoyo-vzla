@@ -1,6 +1,7 @@
 import { Schema, model, models, type InferSchemaType, type Model } from "mongoose";
+import { formatearTelefonoVE } from "../format-telefono";
 
-const normalizarTelefono = (v: string) => v.replace(/\D/g, "");
+const normalizarTelefono = (v: string) => formatearTelefonoVE(v);
 
 const psicologoSchema = new Schema(
   {
