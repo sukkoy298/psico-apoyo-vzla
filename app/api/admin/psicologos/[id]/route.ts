@@ -10,29 +10,6 @@ const RANGOS_VALIDOS = ["infantil", "adultos", "ambos"] as const;
 const ESTADOS_VALIDOS = ["pendiente", "validado", "asignado", "inactivo"] as const;
 const MODALIDADES_VALIDAS = ["online", "presencial", "ambas"] as const;
 
-export async function GET() {
-  const session = await auth();
-  if (!session?.user || session.user.rol !== "admin") {
-    return NextResponse.json(
-      { ok: false, error: "No autorizado" },
-      { status: 401 }
-    );
-  }
-
-  try {
-    await connectDB();
-    const psicologos = await PsicologoModel.find()
-      .sort({ createdAt: -1 })
-      .limit(200)
-      .lean();
-    return NextResponse.json({ ok: true, data: psicologos });
-  } catch (err) {
-    const mensaje =
-      err instanceof Error ? err.message : "Error al consultar la base de datos";
-    return NextResponse.json({ ok: false, error: mensaje }, { status: 500 });
-  }
-}
-
 type PatchBody = {
   estado?: string;
   disponible?: boolean;
