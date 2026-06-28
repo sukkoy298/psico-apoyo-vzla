@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Navbar } from "../_components/navbar";
 import { Footer } from "../_components/footer";
-import { Form } from "../_components/form";
 
 export const metadata: Metadata = {
   title: "Necesito ayuda — Psicólogos por Venezuela",
@@ -30,7 +30,7 @@ export default function PacientesPage() {
           <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-900 dark:border-emerald-900/60 dark:bg-emerald-900/20 dark:text-emerald-100">
             <h2 className="text-lg font-semibold">¿Cómo funciona?</h2>
             <ol className="mt-3 list-decimal space-y-2 pl-5">
-              <li>Completa el formulario de solicitud de abajo.</li>
+              <li>Crea tu cuenta como paciente.</li>
               <li>
                 Un coordinador te contactará en menos de 48 horas para validar
                 la información.
@@ -45,53 +45,19 @@ export default function PacientesPage() {
               </li>
             </ol>
           </div>
-        </section>
 
-        <section className="border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="mx-auto max-w-4xl px-6 py-16">
-            <h2 className="text-2xl font-semibold">Solicitar atención</h2>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-300">
-              Toda la información que compartas es confidencial y se usará
-              únicamente para asignarte un profesional adecuado.
+          <div className="mt-10 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <h2 className="text-lg font-semibold">Solicitar atención</h2>
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+              Para crear tu solicitud de atención, regístrate con tu correo
+              electrónico. La información que compartas es confidencial.
             </p>
-
-            <Form
-              endpoint="/api/pacientes"
-              submitLabel="Enviar mi solicitud"
-              okMessage="¡Gracias por confiar en nosotros! Un coordinador te contactará en menos de 48 horas."
-              fields={[
-                { name: "nombre", label: "Nombre", required: true },
-                {
-                  name: "edad",
-                  label: "Edad",
-                  type: "number",
-                  required: true,
-                  min: 5,
-                  max: 120,
-                },
-                {
-                  name: "telefono",
-                  label: "Teléfono o WhatsApp",
-                  type: "tel",
-                  required: true,
-                },
-                { name: "email", label: "Correo electrónico", type: "email" },
-                { name: "estado", label: "Estado o región", required: true },
-                {
-                  name: "modalidad",
-                  label: "Modalidad preferida",
-                  defaultValue: "videollamada",
-                  options: ["videollamada", "llamada", "presencial", "cualquiera"],
-                },
-                {
-                  name: "mensaje",
-                  label: "Cuéntanos brevemente cómo te sientes",
-                  textarea: true,
-                  rows: 4,
-                  span: 2,
-                },
-              ]}
-            />
+            <Link
+              href="/registro"
+              className="mt-4 inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-2.5 font-medium text-white hover:bg-emerald-700"
+            >
+              Crear cuenta de paciente
+            </Link>
           </div>
         </section>
       </main>

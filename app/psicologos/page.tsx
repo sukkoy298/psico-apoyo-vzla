@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Navbar } from "../_components/navbar";
 import { Footer } from "../_components/footer";
-import { Form } from "../_components/form";
 
 export const metadata: Metadata = {
   title: "Soy psicólogo — Psicólogos por Venezuela",
@@ -47,45 +47,22 @@ export default function PsicologosPage() {
               </ul>
             </div>
           </div>
-        </section>
 
-        <section className="border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="mx-auto max-w-4xl px-6 py-16">
-            <h2 className="text-2xl font-semibold">Formulario de inscripción</h2>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-300">
-              Déjanos tus datos y nuestro equipo de coordinación se pondrá en
-              contacto contigo para validar tu información y asignarte casos.
+          <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-900/60 dark:bg-emerald-900/20">
+            <h2 className="text-lg font-semibold text-emerald-900 dark:text-emerald-100">
+              ¿Listo para sumarte?
+            </h2>
+            <p className="mt-2 text-sm text-emerald-900/80 dark:text-emerald-100/80">
+              Crea tu cuenta de psicólogo. Te pediremos tu número de
+              colegiatura; un administrador la validará antes de asignarte
+              pacientes.
             </p>
-
-            <Form
-              endpoint="/api/psicologos"
-              submitLabel="Enviar mi inscripción"
-              okMessage="¡Gracias por sumarte! Un coordinador te contactará pronto para validar tu colegiatura."
-              fields={[
-                { name: "nombre", label: "Nombre completo", required: true },
-                { name: "email", label: "Correo electrónico", type: "email", required: true },
-                { name: "colegiatura", label: "Número de colegiatura", required: true },
-                {
-                  name: "especialidad",
-                  label: "Especialidad",
-                  placeholder: "Ej. psicología clínica, infantil, de emergencia…",
-                },
-                {
-                  name: "modalidad",
-                  label: "Modalidad",
-                  defaultValue: "online",
-                  options: ["online", "presencial", "ambas"],
-                  span: 2,
-                },
-                {
-                  name: "mensaje",
-                  label: "Mensaje (opcional)",
-                  textarea: true,
-                  rows: 4,
-                  span: 2,
-                },
-              ]}
-            />
+            <Link
+              href="/registro"
+              className="mt-4 inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-2.5 font-medium text-white hover:bg-emerald-700"
+            >
+              Crear cuenta de psicólogo
+            </Link>
           </div>
         </section>
       </main>

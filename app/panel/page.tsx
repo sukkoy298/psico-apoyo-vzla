@@ -1,4 +1,6 @@
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
+import { auth } from "@/lib/auth";
 import { Navbar } from "../_components/navbar";
 import { Footer } from "../_components/footer";
 import { Panel } from "./_components/panel";
@@ -8,7 +10,11 @@ export const metadata: Metadata = {
   description: "Panel interno para revisar las solicitudes de atención psicológica.",
 };
 
-export default function PanelPage() {
+export default async function PanelPage() {
+  const session = await auth();
+  if (!session?.user) redirect("/login");
+  if (session.user.rol !== "admin") redirect("/dashboard");
+
   return (
     <>
       <Navbar />
@@ -18,11 +24,11 @@ export default function PanelPage() {
             Solo coordinación
           </p>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Panel de solicitudes
+            Panel de coordinación
           </h1>
           <p className="mt-3 text-zinc-600 dark:text-zinc-300">
-            Ingresa la clave de coordinación para ver y filtrar las solicitudes
-            de atención registradas.
+            Revisa solicitudes de pacientes y valida a los psicólogos
+            voluntarios.
           </p>
           <div className="mt-8">
             <Panel />
