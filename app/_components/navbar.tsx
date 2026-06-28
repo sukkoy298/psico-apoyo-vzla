@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { auth } from "@/lib/auth";
 import { logoutAction } from "../_actions/auth";
 
@@ -11,12 +12,13 @@ export async function Navbar() {
     <header className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 font-semibold">
-          <span
-            aria-hidden
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white"
-          >
-            ♥
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Logo Psicólogos por Venezuela"
+            width={40}
+            height={40}
+            className="h-9 w-9"
+          />
           <span>Psicólogos por Venezuela</span>
         </Link>
         <ul className="flex items-center gap-2 text-sm sm:gap-4">
