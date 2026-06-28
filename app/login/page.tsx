@@ -16,7 +16,7 @@ export default function LoginPage() {
           <h1 className="text-3xl font-semibold tracking-tight">
             Iniciar sesión
           </h1>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-300">
+          <p className="mt-2 text-zinc-600">
             Accede para ver tu panel de coordinación o dar seguimiento a tu
             solicitud.
           </p>

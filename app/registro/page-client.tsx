@@ -13,7 +13,7 @@ export default function RegistroClient() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-3xl font-semibold tracking-tight">Crear cuenta</h1>
-      <p className="mt-2 text-zinc-600 dark:text-zinc-300">
+      <p className="mt-2 text-zinc-600">
         Regístrate como psicólogo voluntario o como paciente que necesita
         atención.
       </p>
@@ -21,7 +21,7 @@ export default function RegistroClient() {
       <div
         role="tablist"
         aria-label="Tipo de cuenta"
-        className="mt-8 inline-flex rounded-lg border border-zinc-200 p-1 dark:border-zinc-800"
+        className="mt-8 inline-flex rounded-lg border border-zinc-200 p-1"
       >
         <button
           role="tab"
@@ -29,8 +29,8 @@ export default function RegistroClient() {
           onClick={() => setTab("psicologo")}
           className={`rounded-md px-4 py-2 text-sm font-medium ${
             tab === "psicologo"
-              ? "bg-emerald-600 text-white"
-              : "text-zinc-700 dark:text-zinc-200"
+              ? "bg-orange-600 text-white"
+              : "text-zinc-700"
           }`}
         >
           Soy psicólogo
@@ -41,8 +41,8 @@ export default function RegistroClient() {
           onClick={() => setTab("paciente")}
           className={`rounded-md px-4 py-2 text-sm font-medium ${
             tab === "paciente"
-              ? "bg-emerald-600 text-white"
-              : "text-zinc-700 dark:text-zinc-200"
+              ? "bg-orange-600 text-white"
+              : "text-zinc-700"
           }`}
         >
           Soy paciente

@@ -20,13 +20,13 @@ export default async function PanelPage() {
       <Navbar />
       <main className="flex-1">
         <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-          <p className="mb-3 text-sm font-medium uppercase tracking-wide text-emerald-700 dark:text-emerald-400">
+          <p className="mb-3 text-sm font-medium uppercase tracking-wide text-orange-700">
             Solo coordinación
           </p>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Panel de coordinación
           </h1>
-          <p className="mt-3 text-zinc-600 dark:text-zinc-300">
+          <p className="mt-3 text-zinc-600">
             Revisa solicitudes de pacientes y valida a los psicólogos
             voluntarios.
           </p>
