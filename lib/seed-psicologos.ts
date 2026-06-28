@@ -1,6 +1,3 @@
-import { config } from "dotenv";
-config({ path: ".env.local" });
-config({ path: ".env" });
 import { connectDB } from "./mongodb";
 import { PsicologoModel } from "./models/psicologo";
 

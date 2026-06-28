@@ -25,6 +25,7 @@ const psicologoSchema = new Schema(
       default: "",
       set: normalizarTelefono,
     },
+    linkMeet: { type: String, trim: true, default: "" },
     disponible: { type: Boolean, default: false },
     modalidad: {
       type: String,

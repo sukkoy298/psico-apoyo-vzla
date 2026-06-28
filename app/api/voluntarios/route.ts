@@ -13,6 +13,7 @@ type Body = {
   colegiatura?: string;
   especialidad?: string;
   telefonoWhatsapp?: string;
+  linkMeet?: string;
   rangoAtencion?: "infantil" | "adultos" | "ambos";
   modalidad?: "online" | "presencial" | "ambas";
   mensaje?: string;
@@ -65,6 +66,7 @@ export async function POST(request: Request) {
       colegiatura: colegiatura.trim(),
       especialidad: (body.especialidad ?? "").trim(),
       telefonoWhatsapp: (body.telefonoWhatsapp ?? "").trim(),
+      linkMeet: (body.linkMeet ?? "").trim(),
       rangoAtencion: rangoOk,
       modalidad: modalidadOk,
       mensaje: (body.mensaje ?? "").trim(),

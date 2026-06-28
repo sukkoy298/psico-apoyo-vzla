@@ -9,6 +9,7 @@ type Psicologo = {
   colegiatura: string;
   especialidad?: string;
   telefonoWhatsapp?: string;
+  linkMeet?: string;
   rangoAtencion: string;
   modalidad: string;
   estado: "pendiente" | "validado" | "asignado" | "inactivo";
@@ -107,6 +108,7 @@ function PsicologoRow({
   const [rango, setRango] = useState(p.rangoAtencion);
   const [estado, setEstado] = useState(p.estado);
   const [telefono, setTelefono] = useState(p.telefonoWhatsapp ?? "");
+  const [linkMeet, setLinkMeet] = useState(p.linkMeet ?? "");
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [releasing, setReleasing] = useState(false);
@@ -124,6 +126,7 @@ function PsicologoRow({
           rangoAtencion: rango,
           estado,
           telefonoWhatsapp: telefono,
+          linkMeet,
         }),
       });
       const json = (await res.json()) as
@@ -200,7 +203,8 @@ function PsicologoRow({
     disponible !== p.disponible ||
     rango !== p.rangoAtencion ||
     estado !== p.estado ||
-    telefono !== (p.telefonoWhatsapp ?? "");
+    telefono !== (p.telefonoWhatsapp ?? "") ||
+    linkMeet !== (p.linkMeet ?? "");
 
   return (
     <tr className="border-t border-zinc-200 align-top">
@@ -215,6 +219,13 @@ function PsicologoRow({
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
           placeholder="WhatsApp"
+          className="mt-1 w-40 rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs"
+        />
+        <input
+          type="url"
+          value={linkMeet}
+          onChange={(e) => setLinkMeet(e.target.value)}
+          placeholder="Link Meet"
           className="mt-1 w-40 rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs"
         />
       </td>

@@ -26,6 +26,7 @@ const solicitudVoluntarioSchema = new Schema(
       default: "",
       set: normalizarTelefono,
     },
+    linkMeet: { type: String, trim: true, default: "" },
     rangoAtencion: {
       type: String,
       enum: ["infantil", "adultos", "ambos"],

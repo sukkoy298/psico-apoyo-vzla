@@ -9,6 +9,7 @@ type Solicitud = {
   colegiatura: string;
   especialidad?: string;
   telefonoWhatsapp?: string;
+  linkMeet?: string;
   rangoAtencion: string;
   modalidad: string;
   mensaje?: string;
@@ -100,6 +101,7 @@ export function SolicitudesVoluntariosTab() {
                 <th className="px-3 py-2">Nombre</th>
                 <th className="px-3 py-2">Email</th>
                 <th className="px-3 py-2">WhatsApp</th>
+                <th className="px-3 py-2">Meet</th>
                 <th className="px-3 py-2">Colegiatura</th>
                 <th className="px-3 py-2">Rango / Modalidad</th>
                 <th className="px-3 py-2">Mensaje</th>
@@ -203,6 +205,13 @@ function SolicitudRow({
       <td className="px-3 py-2 break-all">{s.email}</td>
       <td className="px-3 py-2 font-mono text-xs">
         {s.telefonoWhatsapp || "—"}
+      </td>
+      <td className="px-3 py-2 text-xs">
+        {s.linkMeet ? (
+          <a href={s.linkMeet} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+            Link
+          </a>
+        ) : "—"}
       </td>
       <td className="px-3 py-2 font-mono text-xs">{s.colegiatura}</td>
       <td className="px-3 py-2">

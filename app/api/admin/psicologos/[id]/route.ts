@@ -16,6 +16,7 @@ type PatchBody = {
   rangoAtencion?: string;
   modalidad?: string;
   telefonoWhatsapp?: string;
+  linkMeet?: string;
   nombre?: string;
   especialidad?: string;
 };
@@ -80,6 +81,9 @@ export async function PATCH(
   }
   if (body.telefonoWhatsapp !== undefined) {
     update.telefonoWhatsapp = String(body.telefonoWhatsapp).replace(/\D/g, "");
+  }
+  if (body.linkMeet !== undefined) {
+    update.linkMeet = String(body.linkMeet).trim();
   }
   if (body.nombre !== undefined) {
     update.nombre = String(body.nombre).trim();

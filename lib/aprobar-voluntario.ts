@@ -50,6 +50,7 @@ export async function aprobarVoluntario(
     colegiatura: solicitud.colegiatura,
     especialidad: solicitud.especialidad ?? "",
     telefonoWhatsapp: normalizarTelefono(solicitud.telefonoWhatsapp ?? ""),
+    linkMeet: (solicitud.linkMeet ?? "").trim(),
     rangoAtencion: asegurarRango(solicitud.rangoAtencion ?? "adultos"),
     modalidad: asegurarModalidad(solicitud.modalidad ?? "online"),
     mensaje: solicitud.mensaje ?? "",

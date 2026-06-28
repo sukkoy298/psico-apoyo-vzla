@@ -22,6 +22,7 @@ export function VoluntarioForm() {
       colegiatura: String(fd.get("colegiatura") ?? "").trim(),
       especialidad: String(fd.get("especialidad") ?? "").trim(),
       telefonoWhatsapp: String(fd.get("telefonoWhatsapp") ?? "").trim(),
+      linkMeet: String(fd.get("linkMeet") ?? "").trim(),
       rangoAtencion: String(fd.get("rangoAtencion") ?? "adultos"),
       modalidad: String(fd.get("modalidad") ?? "online"),
       mensaje: String(fd.get("mensaje") ?? "").trim(),
@@ -126,6 +127,15 @@ export function VoluntarioForm() {
           type="tel"
           required
           placeholder="+58 414 1234567"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2"
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-sm sm:col-span-2">
+        <span className="font-medium">Link de Google Meet (opcional)</span>
+        <input
+          name="linkMeet"
+          type="url"
+          placeholder="https://meet.google.com/xxx-xxxx-xxx"
           className="rounded-md border border-zinc-300 bg-white px-3 py-2"
         />
       </label>

@@ -9,6 +9,8 @@ type Derivacion = {
   rango: "infantil" | "adultos";
   nombrePsicologo: string;
   telefonoPsicologo: string;
+  linkMeet?: string;
+  modalidadContacto?: string;
   createdAt: string;
 };
 
@@ -75,6 +77,7 @@ export function DerivacionesTab() {
                 <th className="px-3 py-2">Rango</th>
                 <th className="px-3 py-2">Psicólogo asignado</th>
                 <th className="px-3 py-2">WhatsApp</th>
+                <th className="px-3 py-2">Meet / Modalidad</th>
               </tr>
             </thead>
             <tbody>
@@ -89,6 +92,16 @@ export function DerivacionesTab() {
                   <td className="px-3 py-2">{d.nombrePsicologo}</td>
                   <td className="px-3 py-2 font-mono text-xs">
                     {d.telefonoPsicologo}
+                  </td>
+                  <td className="px-3 py-2 text-xs">
+                    {d.linkMeet ? (
+                      <a href={d.linkMeet} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                        Meet
+                      </a>
+                    ) : "—"}
+                    {d.modalidadContacto && (
+                      <span className="ml-1 text-zinc-500">({d.modalidadContacto})</span>
+                    )}
                   </td>
                 </tr>
               ))}
