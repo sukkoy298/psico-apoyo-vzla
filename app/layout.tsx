@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "psicologos por venezuela",
-  description: "una red de apoyo para psicólogos en Venezuela, a raiz de la crisis humanitaria que atraviesa el país, con el objetivo de brindar ayuda y soporte a quienes lo necesiten.",
+  title: "Psicólogos por Venezuela — Apoyo tras el terremoto",
+  description:
+    "Organización benéfica que brinda apoyo psicológico gratuito a las personas afectadas por el terremoto en Venezuela. Únete como psicólogo o solicita ayuda como paciente.",
 };
 
 export default function RootLayout({
@@ -24,10 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+        {children}
+      </body>
     </html>
   );
 }
