@@ -1,0 +1,83 @@
+import { connectDB } from "./mongodb";
+import { PsicologoModel } from "./models/psicologo";
+import { DerivacionModel } from "./models/derivacion";
+
+export type DerivarResult =
+  | { status: "ok"; link: string; nombre: string }
+  | { status: "sin_disponibilidad" };
+
+export type Rango = "infantil" | "adultos";
+
+export function rangoSegunEdad(edad: number): Rango {
+  return edad < 18 ? "infantil" : "adultos";
+}
+
+const MAX_INTENTOS = 5;
+
+export async function derivarPsicologo(
+  edad: number,
+  nombre: string
+): Promise<DerivarResult> {
+  await connectDB();
+
+  const rango = rangoSegunEdad(edad);
+
+  for (let intento = 0; intento < MAX_INTENTOS; intento++) {
+    const candidato = await PsicologoModel.findOneAndUpdate(
+      {
+        disponible: true,
+        estado: "validado",
+        rangoAtencion: { $in: [rango, "ambos"] },
+        telefonoWhatsapp: { $exists: true, $ne: "" },
+      },
+      {
+        $set: {
+          estado: "asignado",
+          ultimaAsignacion: new Date(),
+        },
+      },
+      {
+        sort: { ultimaAsignacion: 1, createdAt: 1 },
+        new: true,
+        projection: { nombre: 1, telefonoWhatsapp: 1 },
+      }
+    ).lean();
+
+    if (!candidato || !candidato.telefonoWhatsapp) {
+      return { status: "sin_disponibilidad" };
+    }
+
+    const telefono = String(candidato.telefonoWhatsapp);
+    if (!telefono) {
+      continue;
+    }
+
+    const link = `https://wa.me/${telefono}?text=${encodeURIComponent(
+      `Hola, soy ${nombre}. Solicito atención psicológica.`
+    )}`;
+
+    try {
+      await DerivacionModel.create({
+        nombrePaciente: nombre,
+        edad,
+        rango,
+        nombrePsicologo: candidato.nombre,
+        telefonoPsicologo: telefono,
+        psicologoId: candidato._id,
+      });
+    } catch {
+      // Si falla el log, no bloqueamos la derivación.
+    }
+
+    return { status: "ok", link, nombre: candidato.nombre };
+  }
+
+  return { status: "sin_disponibilidad" };
+}
+
+export async function liberarPsicologo(psicologoId: string) {
+  await connectDB();
+  await PsicologoModel.findByIdAndUpdate(psicologoId, {
+    $set: { estado: "validado", ultimaAsignacion: null },
+  });
+}
