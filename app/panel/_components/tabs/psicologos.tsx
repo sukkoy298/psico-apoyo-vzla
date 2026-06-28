@@ -264,14 +264,14 @@ function PsicologoRow({
           >
             {saving ? "…" : "Guardar"}
           </button>
-          {p.estado === "asignado" && (
+          {p.ultimaAsignacion && (
             <button
               type="button"
               onClick={liberar}
               disabled={releasing}
               className="rounded-md border border-emerald-300 bg-white px-2 py-1 text-xs font-medium text-emerald-800 hover:bg-emerald-50 disabled:opacity-50"
             >
-              {releasing ? "…" : "Liberar a la red"}
+              {releasing ? "…" : "Priorizar en cola"}
             </button>
           )}
           <button

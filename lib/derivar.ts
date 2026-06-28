@@ -32,7 +32,6 @@ export async function derivarPsicologo(
       },
       {
         $set: {
-          estado: "asignado",
           ultimaAsignacion: new Date(),
         },
       },
