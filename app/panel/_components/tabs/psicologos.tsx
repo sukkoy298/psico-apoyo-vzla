@@ -110,6 +110,7 @@ function PsicologoRow({
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [releasing, setReleasing] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function guardar() {
     setSaving(true);
@@ -161,6 +162,37 @@ function PsicologoRow({
       setMsg(err instanceof Error ? err.message : "Error al liberar");
     } finally {
       setReleasing(false);
+    }
+  }
+
+  async function desactivar() {
+    if (
+      !window.confirm(
+        `¿Desactivar a ${p.nombre}? Quedará fuera de la red de derivaciones. Podés volver a activarlo cambiando el estado a "validado".`
+      )
+    ) {
+      return;
+    }
+    setDeleting(true);
+    setMsg(null);
+    try {
+      const res = await fetch(
+        `/api/admin/psicologos/${p._id}/desactivar`,
+        { method: "POST" }
+      );
+      const json = (await res.json()) as
+        | { ok: true }
+        | { ok: false; error: string };
+      if (!json.ok) {
+        setMsg(json.error);
+      } else {
+        setMsg("Desactivado");
+        recargar();
+      }
+    } catch (err) {
+      setMsg(err instanceof Error ? err.message : "Error al desactivar");
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -242,6 +274,14 @@ function PsicologoRow({
               {releasing ? "…" : "Liberar a la red"}
             </button>
           )}
+          <button
+            type="button"
+            onClick={desactivar}
+            disabled={deleting || saving || releasing || p.estado === "inactivo"}
+            className="rounded-md border border-red-200 bg-white px-2 py-1 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-50"
+          >
+            {deleting ? "…" : "Desactivar"}
+          </button>
           {msg && <span className="text-xs text-zinc-500">{msg}</span>}
         </div>
       </td>
