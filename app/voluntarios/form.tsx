@@ -19,9 +19,11 @@ export function VoluntarioForm() {
     const payload = {
       nombre: String(fd.get("nombre") ?? "").trim(),
       email: String(fd.get("email") ?? "").trim(),
+      cedula: String(fd.get("cedula") ?? "").trim(),
       colegiatura: String(fd.get("colegiatura") ?? "").trim(),
       especialidad: String(fd.get("especialidad") ?? "").trim(),
-      telefonoWhatsapp: String(fd.get("telefonoWhatsapp") ?? "").trim(),
+      telefonoWhatsapp: `${String(fd.get("prefijoWhatsapp") ?? "").trim()}${String(fd.get("telefonoWhatsapp") ?? "").trim()}`.trim(),
+      linkMeet: String(fd.get("linkMeet") ?? "").trim(),
       rangoAtencion: String(fd.get("rangoAtencion") ?? "adultos"),
       modalidad: String(fd.get("modalidad") ?? "online"),
       mensaje: String(fd.get("mensaje") ?? "").trim(),
@@ -99,6 +101,19 @@ export function VoluntarioForm() {
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="font-medium">
+          Cédula de identidad <span className="text-red-600">*</span>
+        </span>
+        <input
+          name="cedula"
+          type="text"
+          required
+          inputMode="numeric"
+          placeholder="V-12345678 o E-12345678"
+          className="rounded-md border border-zinc-300 bg-white px-3 py-2"
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-sm">
+        <span className="font-medium">
           Número de colegiatura <span className="text-red-600">*</span>
         </span>
         <input
@@ -121,11 +136,40 @@ export function VoluntarioForm() {
         <span className="font-medium">
           WhatsApp de contacto <span className="text-red-600">*</span>
         </span>
+        <div className="flex gap-2">
+          <select
+            name="prefijoWhatsapp"
+            required
+            defaultValue="0414"
+            className="w-28 rounded-md border border-zinc-300 bg-white px-3 py-2"
+            aria-label="Prefijo del teléfono"
+          >
+            <option value="0412">0412</option>
+            <option value="0414">0414</option>
+            <option value="0416">0416</option>
+            <option value="0422">0422</option>
+            <option value="0424">0424</option>
+            <option value="0426">0426</option>
+          </select>
+          <input
+            name="telefonoWhatsapp"
+            type="tel"
+            required
+            inputMode="numeric"
+            pattern="[0-9]{7}"
+            maxLength={7}
+            placeholder="1234567"
+            className="flex-1 rounded-md border border-zinc-300 bg-white px-3 py-2"
+          />
+        </div>
+        <span className="text-xs text-zinc-500">7 dígitos, sin el prefijo.</span>
+      </label>
+      <label className="flex flex-col gap-1 text-sm sm:col-span-2">
+        <span className="font-medium">Link de Google Meet (opcional)</span>
         <input
-          name="telefonoWhatsapp"
-          type="tel"
-          required
-          placeholder="+58 414 1234567"
+          name="linkMeet"
+          type="url"
+          placeholder="https://meet.google.com/xxx-xxxx-xxx"
           className="rounded-md border border-zinc-300 bg-white px-3 py-2"
         />
       </label>

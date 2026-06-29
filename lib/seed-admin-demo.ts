@@ -1,6 +1,3 @@
-import { config } from "dotenv";
-config({ path: ".env.local" });
-config({ path: ".env" });
 import bcrypt from "bcryptjs";
 import { connectDB } from "./mongodb";
 import { UsuarioModel } from "./models/usuario";

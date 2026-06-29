@@ -13,6 +13,8 @@ const derivacionSchema = new Schema(
     rango: { type: String, enum: ["infantil", "adultos"], required: true },
     nombrePsicologo: { type: String, required: true, trim: true },
     telefonoPsicologo: { type: String, required: true, trim: true },
+    linkMeet: { type: String, trim: true, default: "" },
+    modalidadContacto: { type: String, enum: ["whatsapp", "meet"], default: "whatsapp" },
     psicologoId: {
       type: Schema.Types.ObjectId,
       ref: "Psicologo",

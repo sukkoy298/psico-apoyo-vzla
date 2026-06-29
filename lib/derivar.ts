@@ -3,7 +3,7 @@ import { PsicologoModel } from "./models/psicologo";
 import { DerivacionModel } from "./models/derivacion";
 
 export type DerivarResult =
-  | { status: "ok"; link: string; nombre: string }
+  | { status: "ok"; whatsapp: string; meet?: string; link?: string; nombre: string }
   | { status: "sin_disponibilidad" };
 
 export type Rango = "infantil" | "adultos";
@@ -38,7 +38,7 @@ export async function derivarPsicologo(
       {
         sort: { ultimaAsignacion: 1, createdAt: 1 },
         new: true,
-        projection: { nombre: 1, telefonoWhatsapp: 1 },
+        projection: { nombre: 1, telefonoWhatsapp: 1, linkMeet: 1 },
       }
     ).lean();
 
@@ -51,9 +51,11 @@ export async function derivarPsicologo(
       continue;
     }
 
-    const link = `https://wa.me/${telefono}?text=${encodeURIComponent(
+    const whatsapp = `https://wa.me/${telefono}?text=${encodeURIComponent(
       `Hola, soy ${nombre}. Solicito atención psicológica.`
     )}`;
+
+    const meet = candidato.linkMeet?.trim() || undefined;
 
     try {
       await DerivacionModel.create({
@@ -62,13 +64,15 @@ export async function derivarPsicologo(
         rango,
         nombrePsicologo: candidato.nombre,
         telefonoPsicologo: telefono,
+        linkMeet: meet ?? "",
+        modalidadContacto: meet ? "whatsapp" : "whatsapp",
         psicologoId: candidato._id,
       });
     } catch {
       // Si falla el log, no bloqueamos la derivación.
     }
 
-    return { status: "ok", link, nombre: candidato.nombre };
+    return { status: "ok", whatsapp, meet, link: whatsapp, nombre: candidato.nombre };
   }
 
   return { status: "sin_disponibilidad" };

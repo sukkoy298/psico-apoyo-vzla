@@ -1,6 +1,7 @@
 import { Schema, model, models, type InferSchemaType, type Model } from "mongoose";
+import { formatearTelefonoVE } from "../format-telefono";
 
-const normalizarTelefono = (v: string) => v.replace(/\D/g, "");
+const normalizarTelefono = (v: string) => formatearTelefonoVE(v);
 
 const psicologoSchema = new Schema(
   {
@@ -12,6 +13,7 @@ const psicologoSchema = new Schema(
       trim: true,
       match: [/^\S+@\S+\.\S+$/, "Email inválido"],
     },
+    cedula: { type: String, trim: true, default: "" },
     colegiatura: { type: String, required: true, trim: true },
     especialidad: { type: String, trim: true, default: "" },
     rangoAtencion: {
@@ -25,6 +27,7 @@ const psicologoSchema = new Schema(
       default: "",
       set: normalizarTelefono,
     },
+    linkMeet: { type: String, trim: true, default: "" },
     disponible: { type: Boolean, default: false },
     modalidad: {
       type: String,

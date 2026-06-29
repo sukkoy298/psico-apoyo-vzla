@@ -1,4 +1,5 @@
 import { connectDB } from "./mongodb";
+import { formatearTelefonoVE } from "./format-telefono";
 import { PsicologoModel } from "./models/psicologo";
 import {
   SolicitudVoluntarioModel,
@@ -15,7 +16,7 @@ export type RechazarResult =
   | { status: "no_encontrada" }
   | { status: "ya_procesada" };
 
-const normalizarTelefono = (v: string) => v.replace(/\D/g, "");
+const normalizarTelefono = (v: string) => formatearTelefonoVE(v);
 
 function asegurarRango(
   v: string
@@ -47,9 +48,11 @@ export async function aprobarVoluntario(
   const datos = {
     nombre: solicitud.nombre,
     email: emailNorm,
+    cedula: (solicitud.cedula ?? "").trim(),
     colegiatura: solicitud.colegiatura,
     especialidad: solicitud.especialidad ?? "",
     telefonoWhatsapp: normalizarTelefono(solicitud.telefonoWhatsapp ?? ""),
+    linkMeet: (solicitud.linkMeet ?? "").trim(),
     rangoAtencion: asegurarRango(solicitud.rangoAtencion ?? "adultos"),
     modalidad: asegurarModalidad(solicitud.modalidad ?? "online"),
     mensaje: solicitud.mensaje ?? "",

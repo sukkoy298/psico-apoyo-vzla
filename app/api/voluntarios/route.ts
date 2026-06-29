@@ -10,9 +10,11 @@ const EMAIL_RE = /^\S+@\S+\.\S+$/;
 type Body = {
   nombre?: string;
   email?: string;
+  cedula?: string;
   colegiatura?: string;
   especialidad?: string;
   telefonoWhatsapp?: string;
+  linkMeet?: string;
   rangoAtencion?: "infantil" | "adultos" | "ambos";
   modalidad?: "online" | "presencial" | "ambas";
   mensaje?: string;
@@ -29,12 +31,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const { nombre, email, colegiatura, rangoAtencion, modalidad } = body;
-  if (!nombre || !email || !colegiatura) {
+  const { nombre, email, cedula, colegiatura, rangoAtencion, modalidad } = body;
+  if (!nombre || !email || !cedula || !colegiatura) {
     return NextResponse.json(
       {
         ok: false,
-        error: "Los campos nombre, email y colegiatura son obligatorios",
+        error: "Los campos nombre, email, cédula y colegiatura son obligatorios",
       },
       { status: 400 }
     );
@@ -62,9 +64,11 @@ export async function POST(request: Request) {
     const creada = await SolicitudVoluntarioModel.create({
       nombre: nombre.trim(),
       email: email.toLowerCase().trim(),
+      cedula: cedula.trim(),
       colegiatura: colegiatura.trim(),
       especialidad: (body.especialidad ?? "").trim(),
       telefonoWhatsapp: (body.telefonoWhatsapp ?? "").trim(),
+      linkMeet: (body.linkMeet ?? "").trim(),
       rangoAtencion: rangoOk,
       modalidad: modalidadOk,
       mensaje: (body.mensaje ?? "").trim(),
