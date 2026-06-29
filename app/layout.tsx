@@ -18,6 +18,19 @@ export const metadata: Metadata = {
   title: "Psicólogos por Venezuela — Apoyo tras el terremoto",
   description:
     "Organización benéfica que brinda apoyo psicológico gratuito a las personas afectadas por el terremoto en Venezuela. Únete como psicólogo o solicita ayuda como paciente.",
+
+  // Open Graph
+  openGraph: {
+    title: "Psicólogos por Venezuela — Apoyo tras el terremoto",
+    description:
+      "Organización benéfica que brinda apoyo psicológico gratuito a las personas afectadas por el terremoto en Venezuela. Únete como psicólogo o solicita ayuda como paciente.",
+    images: [
+      {
+        url: "https://psico-ayuda-vzla.org/open-graph-thumbnail.jpeg",
+        alt: "Psicólogos por Venezuela — Apoyo tras el terremoto",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
