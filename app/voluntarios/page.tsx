@@ -75,6 +75,17 @@ export default function VoluntariosPage() {
               <VoluntarioForm />
             </div>
           </div>
+
+          <p className="mt-10 text-sm text-zinc-600">
+            ¿Tenés alguna duda? Escribinos a{" "}
+            <a
+              href="mailto:carlosaug47@gmail.com"
+              className="font-medium text-emerald-700 underline hover:text-emerald-800"
+            >
+              carlosaug47@gmail.com
+            </a>
+            .
+          </p>
         </section>
       </main>
       <Footer />
