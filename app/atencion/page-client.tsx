@@ -2,8 +2,15 @@
 
 import { useState, type FormEvent } from "react";
 
-type DerivarResponse =
-  | { status: "ok"; whatsapp: string; meet?: string; link?: string; nombre: string }
+  type DerivarResponse =
+  | {
+      status: "ok";
+      whatsapp: string;
+      telefono?: string;
+      meet?: string;
+      link?: string;
+      nombre: string;
+    }
   | { status: "sin_disponibilidad" };
 
 type State =
@@ -51,7 +58,12 @@ export default function AtencionClient() {
       const data = (await res.json()) as DerivarResponse;
 
       if (data.status === "ok") {
-        setState({ kind: "ok", whatsapp: data.whatsapp, meet: data.meet, nombre: data.nombre });
+        setState({
+          kind: "ok",
+          whatsapp: data.whatsapp,
+          meet: data.meet,
+          nombre: data.nombre,
+        });
         if (!data.meet) {
           window.location.href = data.whatsapp;
         }

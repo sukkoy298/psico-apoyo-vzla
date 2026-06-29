@@ -3,7 +3,14 @@ import { PsicologoModel } from "./models/psicologo";
 import { DerivacionModel } from "./models/derivacion";
 
 export type DerivarResult =
-  | { status: "ok"; whatsapp: string; meet?: string; link?: string; nombre: string }
+  | {
+      status: "ok";
+      whatsapp: string;
+      telefono: string;
+      meet?: string;
+      link?: string;
+      nombre: string;
+    }
   | { status: "sin_disponibilidad" };
 
 export type Rango = "infantil" | "adolescentes" | "adultos";
@@ -53,7 +60,8 @@ export async function derivarPsicologo(
       continue;
     }
 
-    const whatsapp = `https://wa.me/${telefono}?text=${encodeURIComponent(
+    const telefonoDigits = telefono.replace(/\D/g, "");
+    const whatsapp = `https://wa.me/${telefonoDigits}?text=${encodeURIComponent(
       `Hola, soy ${nombre}. Solicito atención psicológica.`
     )}`;
 
@@ -74,7 +82,7 @@ export async function derivarPsicologo(
       // Si falla el log, no bloqueamos la derivación.
     }
 
-    return { status: "ok", whatsapp, meet, link: whatsapp, nombre: candidato.nombre };
+    return { status: "ok", whatsapp, telefono: telefonoDigits, meet, link: whatsapp, nombre: candidato.nombre };
   }
 
   return { status: "sin_disponibilidad" };
