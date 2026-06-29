@@ -10,7 +10,7 @@ const derivacionSchema = new Schema(
   {
     nombrePaciente: { type: String, required: true, trim: true },
     edad: { type: Number, required: true, min: 0, max: 120 },
-    rango: { type: String, enum: ["infantil", "adultos"], required: true },
+    rango: { type: String, enum: ["infantil", "adolescentes", "adultos"], required: true },
     nombrePsicologo: { type: String, required: true, trim: true },
     telefonoPsicologo: { type: String, required: true, trim: true },
     linkMeet: { type: String, trim: true, default: "" },
