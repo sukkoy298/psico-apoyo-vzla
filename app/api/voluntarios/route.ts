@@ -15,7 +15,7 @@ type Body = {
   especialidad?: string;
   telefonoWhatsapp?: string;
   linkMeet?: string;
-  rangoAtencion?: "infantil" | "adultos" | "ambos";
+  rangoAtencion?: "infantil" | "adolescentes" | "adultos" | "ambos";
   modalidad?: "online" | "presencial" | "ambas";
   mensaje?: string;
 };
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const rangoOk = ["infantil", "adultos", "ambos"].includes(
+  const rangoOk = ["infantil", "adolescentes", "adultos", "ambos"].includes(
     rangoAtencion ?? "adultos"
   )
     ? (rangoAtencion ?? "adultos")

@@ -162,8 +162,11 @@ export default function AtencionClient() {
               min={0}
               max={120}
               className="rounded-md border border-zinc-300 bg-white px-3 py-2"
-              placeholder="Ej. 25"
+              placeholder="Ej. 15"
             />
+            <span className="text-xs text-zinc-500">
+              Derivamos según el rango: 0-10, 11-18 o 19+.
+            </span>
           </label>
 
           {state.kind === "error" && (

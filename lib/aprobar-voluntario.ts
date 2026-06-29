@@ -20,8 +20,14 @@ const normalizarTelefono = (v: string) => formatearTelefonoVE(v);
 
 function asegurarRango(
   v: string
-): "infantil" | "adultos" | "ambos" {
-  if (v === "infantil" || v === "adultos" || v === "ambos") return v;
+): "infantil" | "adolescentes" | "adultos" | "ambos" {
+  if (
+    v === "infantil" ||
+    v === "adolescentes" ||
+    v === "adultos" ||
+    v === "ambos"
+  )
+    return v;
   return "adultos";
 }
 

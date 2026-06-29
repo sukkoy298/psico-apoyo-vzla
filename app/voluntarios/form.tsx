@@ -180,7 +180,8 @@ export function VoluntarioForm() {
           defaultValue="adultos"
           className="rounded-md border border-zinc-300 bg-white px-3 py-2"
         >
-          <option value="infantil">Infantil</option>
+          <option value="infantil">Infantil (0-10)</option>
+          <option value="adolescentes">Adolescentes (11-18)</option>
           <option value="adultos">Adultos</option>
           <option value="ambos">Ambos</option>
         </select>

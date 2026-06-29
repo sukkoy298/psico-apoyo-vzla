@@ -18,7 +18,7 @@ const psicologoSchema = new Schema(
     especialidad: { type: String, trim: true, default: "" },
     rangoAtencion: {
       type: String,
-      enum: ["infantil", "adultos", "ambos"],
+      enum: ["infantil", "adolescentes", "adultos", "ambos"],
       default: "adultos",
     },
     telefonoWhatsapp: {

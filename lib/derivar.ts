@@ -6,10 +6,12 @@ export type DerivarResult =
   | { status: "ok"; whatsapp: string; meet?: string; link?: string; nombre: string }
   | { status: "sin_disponibilidad" };
 
-export type Rango = "infantil" | "adultos";
+export type Rango = "infantil" | "adolescentes" | "adultos";
 
 export function rangoSegunEdad(edad: number): Rango {
-  return edad < 18 ? "infantil" : "adultos";
+  if (edad < 11) return "infantil";
+  if (edad <= 18) return "adolescentes";
+  return "adultos";
 }
 
 const MAX_INTENTOS = 5;

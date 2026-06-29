@@ -42,6 +42,21 @@ export default function PacientesPage() {
             </p>
           </div>
 
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5">
+              <h3 className="text-base font-semibold text-zinc-900">Niños y niñas</h3>
+              <p className="mt-1 text-sm text-zinc-600">De 0 a 10 años.</p>
+            </div>
+            <div className="rounded-xl border border-orange-300 bg-orange-50 p-5 ring-1 ring-orange-200">
+              <h3 className="text-base font-semibold text-orange-900">Adolescentes</h3>
+              <p className="mt-1 text-sm text-orange-800">De 11 a 18 años.</p>
+            </div>
+            <div className="rounded-xl border border-zinc-200 bg-white p-5">
+              <h3 className="text-base font-semibold text-zinc-900">Adultos</h3>
+              <p className="mt-1 text-sm text-zinc-600">De 19 años en adelante.</p>
+            </div>
+          </div>
+
           <div className="mt-10 rounded-2xl border border-zinc-200 bg-white p-6">
             <h2 className="text-lg font-semibold">Solicitar atención</h2>
             <p className="mt-2 text-sm text-zinc-600">
